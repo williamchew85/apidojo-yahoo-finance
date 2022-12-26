@@ -1,4 +1,5 @@
 import requests
+import matplotlib.pyplot as plt
 
 class YahooFinanceAPI:
     def __init__(self, api_key):
@@ -33,5 +34,13 @@ api = YahooFinanceAPI(api_key)
 # Retrieve data for the stock symbol "AAPL"
 data = api.get_stock_data("AAPL", "1d", "1d")
 
-# Print the data returned by the API
-print(data)
+# Extract the date and close price data from the response
+dates = [item["date"] for item in data["chart"]["result"][0]["timestamp"]]
+prices = [item["close"] for item in data["chart"]["result"][0]["indicators"]["quote"][0]["close"]]
+
+# Plot the data using Matplotlib
+plt.plot(dates, prices)
+plt.xlabel("Date")
+plt.ylabel("Close Price")
+plt.title("AAPL Stock Prices")
+plt.show()
