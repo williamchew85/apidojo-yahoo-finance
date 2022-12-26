@@ -5,7 +5,7 @@ Example of a Python script that demonstrates how to use the Yahoo Finance API fr
 Landing page for React.js
 
 # app.js
-This backend script uses the python-shell module to run the Python script that retrieves stock data from the Yahoo Finance API. The script then sends the data back to the frontend as a response to the GET request.
+This backend script uses the python-shell module to run the Python script that retrieves stock data from the Yahoo Finance API. The script then sends the data back to the frontend as a response to the GET request. Alternatively, you may choose to run app.go which is written in GoLang.
 
 On the frontend, the React.js component makes a GET request to the backend to retrieve the stock data and displays it on the page.
 
