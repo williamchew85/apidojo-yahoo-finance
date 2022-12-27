@@ -25,6 +25,23 @@ class YahooFinanceAPI:
         else:
             return {"error": response.status_code}
 
+    def check_price(self, symbol, threshold):
+        """Check the current price of a stock and send an email if it exceeds a threshold."""
+        # Retrieve the current price of the stock
+        data = self.get_stock_data(symbol, "1d", "1d")
+        price = data["chart"]["result"][0]["indicators"]["quote"][0]["close"][0]["price"]
+
+        # Send an email if the price exceeds the threshold
+        if price > threshold:
+            # Your code to send an email goes here
+            print(f"Price of {symbol} is {price}, which exceeds the threshold of {threshold}.")
+        else:
+            print(f"Price of {symbol} is {price}, which is below the threshold of {threshold}.")
+
+# Check the price of the stock symbol "AAPL" and send an email if it exceeds $500
+# Example of usage
+# api.check_price("AAPL", 500)
+
 # Replace YOUR_API_KEY with your actual API key
 api_key = "YOUR_API_KEY"
 
